@@ -1,0 +1,182 @@
+object FrmDistancia: TFrmDistancia
+  Left = 0
+  Top = 0
+  Caption = 'FrmDistancia'
+  ClientHeight = 480
+  ClientWidth = 320
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object LayoultPrincipal: TLayout
+    Align = Client
+    Size.Width = 320.000000000000000000
+    Size.Height = 439.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object rect_calcular: TRectangle
+      Fill.Color = claMediumpurple
+      Position.X = 72.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 193.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      OnClick = rect_calcularClick
+      object Label2: TLabel
+        Align = Center
+        StyledSettings = [Family]
+        Size.Width = 109.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00090000000000000004000000}
+        TextSettings.FontColor = claWhite
+        Text = 'Calcular Rota'
+        TabOrder = 0
+      end
+    end
+    object LayoutOrigem: TLayout
+      Position.X = 16.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 289.000000000000000000
+      Size.Height = 58.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object edit_origem: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.Y = 25.000000000000000000
+        Size.Width = 289.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lbl_origem: TLabel
+        StyledSettings = [Family, Style, FontColor]
+        Position.Y = 8.000000000000000000
+        TextSettings.Font.Size = 16.000000000000000000
+        Text = 'Origem'
+        TabOrder = 2
+      end
+    end
+    object LayoutDestino: TLayout
+      Position.X = 16.000000000000000000
+      Position.Y = 112.000000000000000000
+      Size.Width = 289.000000000000000000
+      Size.Height = 58.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object edit_destino: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 0
+        Position.Y = 25.000000000000000000
+        Size.Width = 289.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lbl_destino: TLabel
+        StyledSettings = [Family, Style, FontColor]
+        Position.Y = 9.000000000000000000
+        TextSettings.Font.Size = 16.000000000000000000
+        Text = 'Destino'
+        TabOrder = 5
+      end
+    end
+    object LayoutDistanciaTempo: TLayout
+      Position.X = 16.000000000000000000
+      Position.Y = 176.000000000000000000
+      Size.Width = 289.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object lbl_distancia: TLabel
+        StyledSettings = [Family, Style, FontColor]
+        Position.Y = 1.000000000000000000
+        Size.Width = 241.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        Text = 'Dist'#226'ncia: 0km'
+        TabOrder = 4
+      end
+      object lbl_tempo: TLabel
+        StyledSettings = [Family, Style, FontColor]
+        Position.Y = 33.000000000000000000
+        Size.Width = 241.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        Text = 'Tempo: 0h'
+        TabOrder = 3
+      end
+    end
+    object btn_gps: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 360.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'GPS'
+      OnClick = btn_gpsClick
+    end
+    object btn_menu: TButton
+      Position.X = 240.000000000000000000
+      Position.Y = 360.000000000000000000
+      Size.Width = 65.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'MENU'
+      OnClick = btn_menuClick
+    end
+  end
+  object rect_top: TRectangle
+    Align = Top
+    Fill.Color = claMediumpurple
+    Size.Width = 320.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    object Label1: TLabel
+      Align = Center
+      StyledSettings = [Family, Style]
+      Size.Width = 56.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'ROTAS'
+      TabOrder = 0
+    end
+  end
+  object RESTClient1: TRESTClient
+    BaseURL = 'https://maps.googleapis.com/maps/api/distancematrix'
+    Params = <>
+    Left = 288
+    Top = 40
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'origem'
+        Options = [poAutoCreated]
+      end
+      item
+        Kind = pkURLSEGMENT
+        Name = 'destino'
+        Options = [poAutoCreated]
+      end>
+    Resource = 
+      'json?origins={origem}&destinations={destino}&mode=driving&langua' +
+      'ge=pt-BR&key=AIzaSyAwjnJzF57fQddVy_dL8yTC01Zw7ufVuY8'
+    Response = RESTResponse1
+    Left = 240
+    Top = 40
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 192
+    Top = 40
+  end
+end

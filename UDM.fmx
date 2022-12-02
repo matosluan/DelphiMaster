@@ -1,0 +1,132 @@
+object dm: Tdm
+  Left = 0
+  Top = 0
+  Caption = 'dm'
+  ClientHeight = 232
+  ClientWidth = 383
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=D:\Users\lmsilva7.UNIVEL\Desktop\DelphiMaster\bd.db'
+      'LockingMode=Normal'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    AfterConnect = FDConnection1AfterConnect
+    BeforeConnect = FDConnection1BeforeConnect
+    Left = 48
+    Top = 32
+  end
+  object FDQueryLogin: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from login'
+      'where email=:pEmail')
+    Left = 152
+    Top = 32
+    ParamData = <
+      item
+        Name = 'PEMAIL'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
+    object FDQueryLoginidlogin: TIntegerField
+      FieldName = 'idlogin'
+      Origin = 'idlogin'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object FDQueryLoginemail: TStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 50
+    end
+    object FDQueryLoginsenha: TStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Size = 100
+    end
+  end
+  object FDQueryUsuarioLogin: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from login where idlogin =:pidlogin')
+    Left = 48
+    Top = 88
+    ParamData = <
+      item
+        Name = 'PIDLOGIN'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object FDQueryVeiculo: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from veiculo')
+    Left = 160
+    Top = 88
+    object FDQueryVeiculoid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQueryVeiculoplaca: TStringField
+      FieldName = 'placa'
+      Origin = 'placa'
+      Size = 7
+    end
+    object FDQueryVeiculodescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 100
+    end
+    object FDQueryVeiculomediag: TBCDField
+      FieldName = 'mediag'
+      Origin = 'mediag'
+      Precision = 8
+      Size = 2
+    end
+    object FDQueryVeiculomediae: TBCDField
+      FieldName = 'mediae'
+      Origin = 'mediae'
+      Precision = 8
+      Size = 2
+    end
+    object FDQueryVeiculomediad: TBCDField
+      FieldName = 'mediad'
+      Origin = 'mediad'
+      Precision = 8
+      Size = 2
+    end
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from login')
+    Left = 240
+    Top = 32
+    object FDQuery1idlogin: TFDAutoIncField
+      FieldName = 'idlogin'
+      Origin = 'idlogin'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQuery1email: TStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Required = True
+      Size = 50
+    end
+    object FDQuery1senha: TStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Required = True
+      Size = 200
+    end
+  end
+end

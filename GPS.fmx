@@ -1,0 +1,138 @@
+object FormGPS: TFormGPS
+  Left = 0
+  Top = 0
+  Caption = 'FormGPS'
+  ClientHeight = 480
+  ClientWidth = 360
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object TabControl1: TTabControl
+    Align = Client
+    Size.Width = 360.000000000000000000
+    Size.Height = 439.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = Dots
+    Sizes = (
+      360s
+      439s)
+    object TabItemGPS: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TABGPS'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object LayoutFundo: TLayout
+        Align = Client
+        Size.Width = 360.000000000000000000
+        Size.Height = 439.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object MapView1: TMapView
+          Position.X = 8.000000000000000000
+          Position.Y = 32.000000000000000000
+          Size.Width = 345.000000000000000000
+          Size.Height = 202.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Switch1: TSwitch
+          IsChecked = False
+          Position.X = 272.000000000000000000
+          Position.Y = 240.000000000000000000
+          TabOrder = 2
+          OnClick = Switch1Click
+        end
+        object LayoutLatitude: TLayout
+          Position.X = 8.000000000000000000
+          Position.Y = 264.000000000000000000
+          Size.Width = 161.000000000000000000
+          Size.Height = 26.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          object Label1: TLabel
+            Position.Y = 9.000000000000000000
+            Size.Width = 161.000000000000000000
+            Size.Height = 17.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Latitude: '
+            TabOrder = 2
+          end
+        end
+        object LayoutLongitude: TLayout
+          Position.X = 8.000000000000000000
+          Position.Y = 288.000000000000000000
+          Size.Width = 161.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          object Label2: TLabel
+            Position.X = 1.000000000000000000
+            Position.Y = 16.000000000000000000
+            Size.Width = 160.000000000000000000
+            Size.Height = 17.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Longitude:'
+            TabOrder = 3
+          end
+        end
+        object btn_menu: TButton
+          Position.X = 160.000000000000000000
+          Position.Y = 368.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'MENU'
+          OnClick = btn_menuClick
+        end
+        object btn_rota: TButton
+          Position.X = 272.000000000000000000
+          Position.Y = 368.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'ROTA'
+          OnClick = btn_rotaClick
+        end
+      end
+    end
+  end
+  object Rectangle1: TRectangle
+    Align = Top
+    Fill.Color = claMediumpurple
+    Size.Width = 360.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    object Label3: TLabel
+      Align = Center
+      StyledSettings = [Family, Style]
+      Size.Width = 33.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'GPS'
+      TabOrder = 0
+    end
+  end
+  object LocationSensor1: TLocationSensor
+    ActivityType = Other
+    UsageAuthorization = WhenInUse
+    OnLocationChanged = LocationSensor1LocationChanged
+    Left = 320
+    Top = 56
+  end
+end
